@@ -1,0 +1,63 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+using namespace std;
+void Nhap(int[][100], int&, int&);
+void Xuat(int[][100], int, int);
+int ChanDau(int[][100], int, int);
+
+int main()
+{
+	int b[100][100];
+	int k, l;
+	Nhap(b, k, l);
+	cout << "Ma tran ban dau la: " << endl;
+	Xuat(b, k, l);
+
+	cout << "Gia tri chan dau tien cua ma tran: ";
+	if (ChanDau(b, k, l) == -1)
+		cout << "Ma tran khong co gia tri chan";
+	else
+		cout << ChanDau(b, k, l);
+
+	return 1;
+}
+void Nhap(int a[][100], int& m, int& n)
+{
+	cout << "Nhap so dong: ";
+	cin >> m;
+	cout << "Nhap so cot: ";
+	cin >> n;
+	srand(std::time(nullptr));
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			a[i][j] = rand() % (200 + 1) - 100;
+		}
+	}
+}
+void Xuat(int a[][100], int m, int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << setw(5) << a[i][j];
+		}
+		cout << endl;
+	}
+}
+int ChanDau(int a[][100], int m, int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (a[i][j] % 2 == 0)
+				return a[i][j];
+		}
+	}
+	return -1;
+}

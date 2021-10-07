@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+float Tong(int);
+
+int main()
+{
+	int n;
+	cout << "Nhap n: ";
+	cin >> n;
+
+	float kq = Tong(n);
+	cout << "Ket qua = " << kq;
+	return 1;
+}
+
+float Tong(int k)
+{
+	float s = 0;
+	for (int i = 0; i <= k; i = i + 1)
+		s = s + (float)(2 * i + 1) / (2 * i + 2);
+	return s;
+}
